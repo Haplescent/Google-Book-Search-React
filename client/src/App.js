@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import SearchAppBar from "./components/AppBar.js";
 import AdvancedGridList from "./components/GridList";
 
-import useGetAllBooks from "./hooks/useGetAllBooks";
-
 function App() {
-  const [showSaved, setshowSaved] = useState(true);
+  const [showSaved, setshowSaved] = useState(false);
 
   return (
     <div>

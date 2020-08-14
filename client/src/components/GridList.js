@@ -45,7 +45,15 @@ export default function AdvancedGridList({ showSaved }) {
   const classes = useStyles();
   const [tileData, setTileData] = useState([]);
 
-  useGetAllBooks(setTileData, showSaved);
+  useGetAllBooks(setTileData, showSaved, "molecular biology");
+
+  const showFavoriteButton = (tile) => {
+    return (
+      <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
+        <StarBorderIcon />
+      </IconButton>
+    );
+  };
 
   return (
     <div className={classes.root}>
@@ -65,14 +73,7 @@ export default function AdvancedGridList({ showSaved }) {
             <GridListTileBar
               title={tile.title}
               titlePosition="top"
-              actionIcon={
-                <IconButton
-                  aria-label={`star ${tile.title}`}
-                  className={classes.icon}
-                >
-                  <StarBorderIcon />
-                </IconButton>
-              }
+              actionIcon={tile.saved ? null : showFavoriteButton(tile)}
               actionPosition="left"
               className={classes.titleBar}
             />
