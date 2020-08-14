@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
 
 // The example data is structured as follows:
 
-export default function AdvancedGridList() {
+export default function AdvancedGridList({ showSaved }) {
   const classes = useStyles();
   const [tileData, setTileData] = useState([]);
 
-  useGetAllBooks(setTileData);
+  useGetAllBooks(setTileData, showSaved);
 
   return (
     <div className={classes.root}>
