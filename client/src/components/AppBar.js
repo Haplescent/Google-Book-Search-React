@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    // flexGrow: 1,
-    // justifyContent: "center",
-    // display: "none",
     [theme.breakpoints.up("sm")]: {
       alignItems: "flex-start",
       display: "block",
@@ -30,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginLeft: 0,
     marginTop: 15,
     marginLeft: theme.spacing(1),
     width: "100%",
@@ -46,20 +42,16 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: "inherit",
+    width: `100%`,
+    "&:focus": {
+      width: `100%`,
+    },
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
+
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      // 12 and
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
   },
   toolbar: {
     minHeight: 100,
