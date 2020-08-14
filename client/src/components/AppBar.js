@@ -1,6 +1,7 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import TextButtons from "./Button.js";
 
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
@@ -14,10 +15,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    [theme.breakpoints.up("sm")]: {
-      alignItems: "flex-start",
-      display: "block",
-    },
+    flexDirection: "row",
+    // marginLeft: theme.spacing(20),
+    alignItems: "flex-start",
+    justifyContent: "space-around",
+    display: "flex",
   },
   search: {
     alignSelf: "center",
@@ -49,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
   },
@@ -70,6 +71,7 @@ export default function SearchAppBar() {
         <Toolbar className={classes.toolbar}>
           <Typography className={classes.title} variant="h6" noWrap>
             Google Book Search
+            <TextButtons className={classes.saveButton} />
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
