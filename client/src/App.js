@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <SearchAppBar />
+      <SearchAppBar setshowSaved={setshowSaved} />
       <AdvancedGridList showSaved={showSaved} />
     </div>
   );

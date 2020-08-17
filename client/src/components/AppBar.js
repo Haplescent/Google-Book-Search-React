@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ setshowSaved }) {
   const classes = useStyles();
 
   return (
@@ -71,7 +71,10 @@ export default function SearchAppBar() {
         <Toolbar className={classes.toolbar}>
           <Typography className={classes.title} variant="h6" noWrap>
             Google Book Search
-            <TextButtons className={classes.saveButton} />
+            <TextButtons
+              setshowSaved={setshowSaved}
+              className={classes.saveButton}
+            />
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

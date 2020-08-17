@@ -13,12 +13,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TextButtons() {
+export default function TextButtons({ setshowSaved }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Button variant="contained">Default</Button>
+      <Button
+        onClick={() => {
+          setshowSaved(true);
+        }}
+        variant="contained"
+      >
+        Saved
+      </Button>
     </div>
   );
 }
