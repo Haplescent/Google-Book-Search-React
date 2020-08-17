@@ -4,16 +4,12 @@ import SearchAppBar from "./components/AppBar.js";
 import AdvancedGridList from "./components/GridList";
 
 function App() {
-  const [showSaved, setshowSaved] = useState(false);
-  const [query, setQuery] = useState("molecular biology");
+  const [showSaved, setshowSaved] = useState(true);
+  const [query, setQuery] = useState("");
 
   return (
     <div>
-      <SearchAppBar
-        setshowSaved={setshowSaved}
-        setQuery={setQuery}
-        setshowSaved={setshowSaved}
-      />
+      <SearchAppBar setQuery={setQuery} setshowSaved={setshowSaved} />
       <AdvancedGridList showSaved={showSaved} query={query} />
     </div>
   );

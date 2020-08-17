@@ -49,12 +49,18 @@ export default function AdvancedGridList({ showSaved, query }) {
 
   const showFavoriteButton = (tile) => {
     return (
-      <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
+      <IconButton
+        aria-label={`star ${tile.title}`}
+        className={classes.icon}
+        onClick={() => {
+          console.log("favorite button onclick working");
+          console.log(tile);
+        }}
+      >
         <StarBorderIcon />
       </IconButton>
     );
   };
-
   return (
     <div className={classes.root}>
       <GridList
@@ -64,11 +70,7 @@ export default function AdvancedGridList({ showSaved, query }) {
         cols={4}
       >
         {tileData.map((tile) => (
-          <GridListTile
-            key={tile.img}
-            cols={tile.featured ? 2 : 1}
-            rows={tile.featured ? 2 : 1}
-          >
+          <GridListTile key={tile.img} cols={1} rows={1}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
