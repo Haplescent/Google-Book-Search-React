@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import TextButtons from "./Button.js";
+import Button from "@material-ui/core/Button";
 
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
@@ -62,8 +63,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar({ setshowSaved }) {
+export default function SearchAppBar({ setshowSaved, setQuery }) {
   const classes = useStyles();
+  const [searchText, setSearchText] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setshowSaved(false);
+    setQuery(searchText);
+  };
 
   return (
     <div className={classes.root}>
@@ -76,11 +84,15 @@ export default function SearchAppBar({ setshowSaved }) {
               className={classes.saveButton}
             />
           </Typography>
-          <div className={classes.search}>
+
+          <form className={classes.search} onSubmit={handleSubmit}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+              onInput={(e) => {
+                setSearchText(e.target.value);
+              }}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -88,7 +100,7 @@ export default function SearchAppBar({ setshowSaved }) {
               }}
               inputProps={{ "aria-label": "search" }}
             />
-          </div>
+          </form>
         </Toolbar>
       </AppBar>
     </div>

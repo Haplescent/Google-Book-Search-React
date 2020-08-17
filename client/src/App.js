@@ -5,11 +5,16 @@ import AdvancedGridList from "./components/GridList";
 
 function App() {
   const [showSaved, setshowSaved] = useState(false);
+  const [query, setQuery] = useState("molecular biology");
 
   return (
     <div>
-      <SearchAppBar setshowSaved={setshowSaved} />
-      <AdvancedGridList showSaved={showSaved} />
+      <SearchAppBar
+        setshowSaved={setshowSaved}
+        setQuery={setQuery}
+        setshowSaved={setshowSaved}
+      />
+      <AdvancedGridList showSaved={showSaved} query={query} />
     </div>
   );
 }

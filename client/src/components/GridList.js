@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
 
 // The example data is structured as follows:
 
-export default function AdvancedGridList({ showSaved }) {
+export default function AdvancedGridList({ showSaved, query }) {
   const classes = useStyles();
   const [tileData, setTileData] = useState([]);
 
-  useGetAllBooks(setTileData, showSaved, "molecular biology");
+  useGetAllBooks(setTileData, showSaved, query);
 
   const showFavoriteButton = (tile) => {
     return (
