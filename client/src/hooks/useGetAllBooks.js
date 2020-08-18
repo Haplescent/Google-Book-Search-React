@@ -27,6 +27,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
           bookData = [];
           jsonObject.forEach((book) => {
             let bookDataObject = {};
+            bookDataObject.id = book.id;
             bookDataObject.author = book.author;
             bookDataObject.title = book.title;
             bookDataObject.img = book.image;

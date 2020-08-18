@@ -5,8 +5,9 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-import useDeleteABook from "../hooks/useDeleteABook";
+import DeleteABook from "../hooks/useDeleteABook";
 import useGetAllBooks from "../hooks/useGetAllBooks";
 import PostABook from "../hooks/usePostABook";
 import useSearchForBooks from "../hooks/useSearchForBooks";
@@ -63,6 +64,22 @@ export default function AdvancedGridList({ showSaved, query }) {
     );
   };
 
+  const showDeleteButton = (tile) => {
+    return (
+      <IconButton
+        aria-label={`delete ${tile.title}`}
+        className={classes.icon}
+        onClick={() => {
+          console.log("delete button onclick working");
+          console.log(tile);
+          DeleteABook(tile);
+        }}
+      >
+        <DeleteIcon />
+      </IconButton>
+    );
+  };
+
   console.log(`rendering ${tileData.length} onto screen`);
   return (
     <div className={classes.root}>
@@ -78,7 +95,9 @@ export default function AdvancedGridList({ showSaved, query }) {
             <GridListTileBar
               title={tile.title}
               titlePosition="top"
-              actionIcon={tile.saved ? null : showFavoriteButton(tile)}
+              actionIcon={
+                tile.saved ? showDeleteButton(tile) : showFavoriteButton(tile)
+              }
               actionPosition="left"
               className={classes.titleBar}
             />
