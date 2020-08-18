@@ -73,6 +73,7 @@ export default function AdvancedGridList({ showSaved, query }) {
           console.log("delete button onclick working");
           console.log(tile);
           DeleteABook(tile);
+          setTileData(tileData.filter((eachTile) => eachTile.id !== tile.id));
         }}
       >
         <DeleteIcon />
@@ -80,7 +81,7 @@ export default function AdvancedGridList({ showSaved, query }) {
     );
   };
 
-  console.log(`rendering ${tileData.length} onto screen`);
+  // console.log(`rendering ${tileData.length} onto screen`);
   return (
     <div className={classes.root}>
       <GridList
