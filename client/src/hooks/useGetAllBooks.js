@@ -9,9 +9,9 @@ function useGetAllBooks(setTileData, showSaved, query) {
   useEffect(() => {
     setTileData([]);
     let bookData;
-    console.log(showSaved);
+    // console.log(showSaved);
     if (showSaved) {
-      console.log("getting info from script");
+      // console.log("getting info from script");
 
       var config = {
         method: "get",
@@ -23,7 +23,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
         .then(function (response) {
           let jsonString = JSON.stringify(response.data);
           let jsonObject = JSON.parse(jsonString);
-          console.log(jsonObject);
+          // console.log(jsonObject);
           bookData = [];
           jsonObject.forEach((book) => {
             let bookDataObject = {};
@@ -35,14 +35,14 @@ function useGetAllBooks(setTileData, showSaved, query) {
             bookDataObject.saved = true;
             bookData.push(bookDataObject);
           });
-          console.log(bookData);
+          // console.log(bookData);
           setTileData(bookData);
         })
         .catch(function (error) {
           console.log(error);
         });
     } else {
-      console.log("getting info from api call");
+      // console.log("getting info from api call");
       setTileData([]);
       axios
         .get("https://www.googleapis.com/books/v1/volumes?q=" + query)
@@ -63,7 +63,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
               return returnObject;
             }
           });
-          console.log(bookData);
+          // console.log(bookData);
           setTileData(bookData);
         })
         .catch((err) => {

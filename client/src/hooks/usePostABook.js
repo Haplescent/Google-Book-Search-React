@@ -18,8 +18,8 @@ function PostABook(tile) {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      console.log("success");
+      // console.log(JSON.stringify(response.data));
+      // console.log("success");
     })
     .catch(function (error) {
       console.log(error);

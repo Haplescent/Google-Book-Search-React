@@ -54,8 +54,6 @@ export default function AdvancedGridList({ showSaved, query }) {
         aria-label={`star ${tile.title}`}
         className={classes.icon}
         onClick={() => {
-          console.log("favorite button onclick working");
-          console.log(tile);
           PostABook(tile);
         }}
       >
@@ -70,8 +68,6 @@ export default function AdvancedGridList({ showSaved, query }) {
         aria-label={`delete ${tile.title}`}
         className={classes.icon}
         onClick={() => {
-          console.log("delete button onclick working");
-          console.log(tile);
           DeleteABook(tile);
           setTileData(tileData.filter((eachTile) => eachTile.id !== tile.id));
         }}
@@ -81,7 +77,6 @@ export default function AdvancedGridList({ showSaved, query }) {
     );
   };
 
-  // console.log(`rendering ${tileData.length} onto screen`);
   return (
     <div className={classes.root}>
       <GridList
