@@ -7,54 +7,12 @@ function useGetAllBooks(setTileData, showSaved, query) {
   // });
 
   useEffect(() => {
+    setTileData([]);
     let bookData;
     console.log(showSaved);
     if (showSaved) {
       console.log("getting info from script");
-      // bookData = [
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      //   {
-      //     img:
-      //       "https://images-na.ssl-images-amazon.com/images/I/610yw2FxTeL._SX390_BO1,204,203,200_.jpg",
-      //     title: "Lehninger Principles of Biochemistry",
-      //     author: "David L. Nelson, Michael M. Cox",
-      //     saved: true,
-      //   },
-      // ];
+
       var config = {
         method: "get",
         url: "https://hidden-garden-49902.herokuapp.com/api/all",
@@ -65,18 +23,26 @@ function useGetAllBooks(setTileData, showSaved, query) {
         .then(function (response) {
           let jsonString = JSON.stringify(response.data);
           let jsonObject = JSON.parse(jsonString);
-          jsonObject.forEach((book) => {
-            book.saved = true;
-            book.img = book.image;
-          });
           console.log(jsonObject);
-          setTileData(jsonObject);
+          bookData = [];
+          jsonObject.forEach((book) => {
+            let bookDataObject = {};
+            bookDataObject.author = book.author;
+            bookDataObject.title = book.title;
+            bookDataObject.img = book.image;
+            bookDataObject.link = book.link;
+            bookDataObject.saved = true;
+            bookData.push(bookDataObject);
+          });
+          console.log(bookData);
+          setTileData(bookData);
         })
         .catch(function (error) {
           console.log(error);
         });
     } else {
       console.log("getting info from api call");
+      setTileData([]);
       axios
         .get("https://www.googleapis.com/books/v1/volumes?q=" + query)
         .then((response) => {
@@ -84,7 +50,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
           let jsonArray = JSON.parse(jsonString);
           // console.log(typeof jsonArray);
           // console.log(jsonArray);
-          let bookData = jsonArray.map((item) => {
+          bookData = jsonArray.map((item) => {
             let returnObject = {};
             // console.log(item.volumeInfo);
             try {

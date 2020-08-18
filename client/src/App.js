@@ -4,7 +4,7 @@ import SearchAppBar from "./components/AppBar.js";
 import AdvancedGridList from "./components/GridList";
 
 function App() {
-  const [showSaved, setshowSaved] = useState(true);
+  const [showSaved, setshowSaved] = useState(false);
   const [query, setQuery] = useState("");
 
   return (

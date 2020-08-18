@@ -61,6 +61,8 @@ export default function AdvancedGridList({ showSaved, query }) {
       </IconButton>
     );
   };
+
+  console.log(`rendering ${tileData.length} onto screen`);
   return (
     <div className={classes.root}>
       <GridList
