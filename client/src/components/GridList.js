@@ -8,7 +8,7 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 import useDeleteABook from "../hooks/useDeleteABook";
 import useGetAllBooks from "../hooks/useGetAllBooks";
-import usePostABook from "../hooks/usePostABook";
+import PostABook from "../hooks/usePostABook";
 import useSearchForBooks from "../hooks/useSearchForBooks";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +55,7 @@ export default function AdvancedGridList({ showSaved, query }) {
         onClick={() => {
           console.log("favorite button onclick working");
           console.log(tile);
+          PostABook(tile);
         }}
       >
         <StarBorderIcon />
