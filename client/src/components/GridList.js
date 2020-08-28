@@ -6,6 +6,8 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import DeleteIcon from "@material-ui/icons/Delete";
+import InfoIcon from '@material-ui/icons/Info';
+import Link from '@material-ui/core/Link';
 
 import DeleteABook from "../hooks/useDeleteABook";
 import useGetAllBooks from "../hooks/useGetAllBooks";
@@ -96,6 +98,16 @@ export default function AdvancedGridList({ showSaved, query }) {
               }
               actionPosition="left"
               className={classes.titleBar}
+            />
+            <GridListTileBar
+              titlePosition="bottom"
+              subtitle={<span>by: {tile.author}</span>}
+              actionIcon={
+                <Link aria-label={`info about ${tile.title}`} className={classes.icon} href={tile.link}>
+                  <InfoIcon />
+                </Link>
+              }
+              actionPosition="right"
             />
           </GridListTile>
         ))}

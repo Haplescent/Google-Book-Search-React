@@ -28,14 +28,14 @@ function useGetAllBooks(setTileData, showSaved, query) {
           jsonObject.forEach((book) => {
             let bookDataObject = {};
             bookDataObject.id = book.id;
-            bookDataObject.author = book.author;
+            bookDataObject.author = book.authors;
             bookDataObject.title = book.title;
             bookDataObject.img = book.image;
             bookDataObject.link = book.link;
             bookDataObject.saved = true;
             bookData.push(bookDataObject);
           });
-          // console.log(bookData);
+          console.log(bookData);
           setTileData(bookData);
         })
         .catch(function (error) {
@@ -53,7 +53,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
           // console.log(jsonArray);
           bookData = jsonArray.map((item) => {
             let returnObject = {};
-            // console.log(item.volumeInfo);
+            console.log(item.volumeInfo);
             try {
               returnObject.title = item.volumeInfo.title;
               returnObject.author = item.volumeInfo.authors[0];

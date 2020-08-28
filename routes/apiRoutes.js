@@ -23,7 +23,7 @@ router.get("/find/:id", (req, res) => {
 router.post("/new", (req, res) => {
   db.Book.create({
     title: req.body.title,
-    authors: req.body.authors,
+    author: req.body.author,
     description: req.body.description,
     image: req.body.image,
     link: req.body.link,
