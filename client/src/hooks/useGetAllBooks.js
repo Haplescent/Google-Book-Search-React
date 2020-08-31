@@ -28,11 +28,12 @@ function useGetAllBooks(setTileData, showSaved, query) {
           jsonObject.forEach((book) => {
             let bookDataObject = {};
             bookDataObject.id = book.id;
-            bookDataObject.author = book.authors;
+            bookDataObject.author = book.author;
             bookDataObject.title = book.title;
             bookDataObject.img = book.image;
             bookDataObject.link = book.link;
             bookDataObject.saved = true;
+            bookDataObject.description = book.description
             bookData.push(bookDataObject);
           });
           console.log(bookData);
@@ -59,6 +60,7 @@ function useGetAllBooks(setTileData, showSaved, query) {
               returnObject.author = item.volumeInfo.authors[0];
               returnObject.link = item.volumeInfo.infoLink;
               returnObject.img = item.volumeInfo.imageLinks.thumbnail;
+              returnObject.description = item.volumeInfo.description
             } finally {
               return returnObject;
             }

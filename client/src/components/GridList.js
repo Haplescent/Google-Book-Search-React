@@ -12,7 +12,7 @@ import Link from '@material-ui/core/Link';
 import DeleteABook from "../hooks/useDeleteABook";
 import useGetAllBooks from "../hooks/useGetAllBooks";
 import PostABook from "../hooks/usePostABook";
-import useSearchForBooks from "../hooks/useSearchForBooks";
+// import useSearchForBooks from "../hooks/useSearchForBooks";
 
 const useStyles = makeStyles((theme) => ({
   // overrides: {
@@ -40,9 +40,13 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: "white",
   },
+  bottomBar:{
+    subtitle: {
+      overflowWrap: "normal"
+    }
+  }
+  
 }));
-
-// The example data is structured as follows:
 
 export default function AdvancedGridList({ showSaved, query }) {
   const classes = useStyles();
@@ -82,10 +86,10 @@ export default function AdvancedGridList({ showSaved, query }) {
   return (
     <div className={classes.root}>
       <GridList
-        cellHeight={300}
+        cellHeight={500}
         spacing={1}
         className={classes.gridList}
-        cols={4}
+        cols={2}
       >
         {tileData.map((tile) => (
           <GridListTile key={tile.img} cols={1} rows={1}>
@@ -100,8 +104,9 @@ export default function AdvancedGridList({ showSaved, query }) {
               className={classes.titleBar}
             />
             <GridListTileBar
+              className={classes.bottomBar}
               titlePosition="bottom"
-              subtitle={<span>by: {tile.author}</span>}
+              subtitle={<span>by: {tile.author}  <p>{tile.description}</p> </span>}
               actionIcon={
                 <Link aria-label={`info about ${tile.title}`} className={classes.icon} href={tile.link}>
                   <InfoIcon />

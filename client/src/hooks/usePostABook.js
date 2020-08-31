@@ -2,13 +2,18 @@ import React, { useEffect } from "react";
 const axios = require("axios");
 const qs = require("qs");
 
-function PostABook(tile) {
+function PostABook({title, author, img, link, description}) {
+  console.log({title, author, img, link, description})
+  console.log(author)
+  console.log(typeof author)
   let data = qs.stringify({
-    title: tile.title,
-    authors: tile.author,
-    image: tile.img,
-    link: tile.link,
+    title: title,
+    author: author,
+    image: img,
+    link: link,
+    description: description,
   });
+  console.log(data)
   let config = {
     method: "post",
     url: "https://hidden-garden-49902.herokuapp.com/api/new",
